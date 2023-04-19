@@ -1,5 +1,7 @@
 {
   "name": "tecMvb",
-  "integrations": {},
+  "integrations": {
+    "capacitor": {}
+  },
   "type": "angular"
 }

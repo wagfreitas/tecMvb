@@ -44,12 +44,12 @@
   --ion-color-warning-tint: #ffca22;
 
   /** danger **/
-  --ion-color-danger: #eb445a;
-  --ion-color-danger-rgb: 235, 68, 90;
+  --ion-color-danger: #8e0517;
+  --ion-color-danger-rgb: 142, 5, 23;
   --ion-color-danger-contrast: #ffffff;
-  --ion-color-danger-contrast-rgb: 255, 255, 255;
-  --ion-color-danger-shade: #cf3c4f;
-  --ion-color-danger-tint: #ed576b;
+  --ion-color-danger-contrast-rgb: 142, 5, 23;
+  --ion-color-danger-shade: #8e0517;
+  --ion-color-danger-tint: #8e0517;
 
   /** dark **/
   --ion-color-dark: #222428;
@@ -153,7 +153,7 @@
    */
 
   .ios body {
-    --ion-background-color: #000000;
+    --ion-background-color: #fffafa;
     --ion-background-color-rgb: 0,0,0;
 
     --ion-text-color: #ffffff;
