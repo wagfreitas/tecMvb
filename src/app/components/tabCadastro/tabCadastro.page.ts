@@ -3,9 +3,9 @@ import { IonicModule } from '@ionic/angular';
 
 
 @Component({
-  selector: 'app-tab2',
-  templateUrl: 'tab2.page.html',
-  styleUrls: ['tab2.page.scss'],
+  selector: 'app-tabCadastro',
+  templateUrl: 'tabCadastro.page.html',
+  styleUrls: ['tabCadastro.page.scss'],
   standalone: true,
   imports: [IonicModule]
 })
