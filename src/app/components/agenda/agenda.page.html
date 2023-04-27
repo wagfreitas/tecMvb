@@ -1,0 +1,46 @@
+<ion-content>
+  <div class="btn">
+    <div class="text">
+      <ion-buttons slot="start">
+        <ion-button (click)="onBack()" color="light">
+          <ion-icon name="arrow-back"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <ion-buttons slot="end">
+        <ion-button (click)="onClick()" color="light">
+          <ion-icon name="share-social"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </div>
+  </div>
+
+  <div class="main_div">
+    <ion-slides mode="ios" scrollbar="ios">
+      <ion-slide>
+        <div [style.backgroundImage]="'url(assets/images/2.jpg)'" class="image">
+        </div>
+      </ion-slide>
+    </ion-slides>
+  </div>
+
+
+  <ion-item lines="none">
+    <div class="ttl">
+      <ion-label class="sub_heading">Conserto de Veiculo</ion-label>
+      <ion-label>R$ 150,00 a hora </ion-label>
+    </div>
+      <ion-button slot="end" class="content_button" (click)="onService()" expand="block">
+        Agendar
+      </ion-button>
+  </ion-item>
+
+  <ion-item lines="none">
+    <div class="ttl">
+      <ion-label class="sub_heading">Troca de Óleo </ion-label>
+      <ion-label>R$ 350,00 a troca .</ion-label>
+    </div>
+      <ion-button slot="end" class="content_button" (click)="onService()" expand="block">
+        Agendar
+      </ion-button>
+  </ion-item>
+</ion-content>

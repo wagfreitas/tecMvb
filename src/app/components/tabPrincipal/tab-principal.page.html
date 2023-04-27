@@ -1,71 +1,50 @@
-<ion-header [translucent]="true">
-  <ion-toolbar color= "danger">
-   <ion-title>Principal</ion-title>
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-  </ion-toolbar>
-</ion-header>
+<ion-content>
+  <div class="img">
+    <div class="main_image" [style.backgroundImage]="'url(assets/images/mecanico.jpg)'">
 
-<ion-content class="card-background-page">
-  <ion-grid>
+      <ion-buttons slot="start">
+        <ion-button (click)="util.openMenu()" color="white">
+          <ion-icon slot="start" name="reorder-three-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+
+      <div class="searchbar">
+        <ion-label class="sub_heading">Selecione uma Opção</ion-label>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="main_content">
     <ion-row>
-      <ion-col size="12" size-sm="3"> <ion-card>
-        <ion-card-header>
-          <ion-card-title> <img class="displayed"  height="80px" width="80px" src="../../assets/images/relatorio.png"> </ion-card-title>
-          <ion-card-subtitle></ion-card-subtitle>
-        </ion-card-header>
-
-        <ion-card-content>
-          CLIENTES
-        </ion-card-content>
-      </ion-card>
-    </ion-col>
-      <ion-col size="6" size-sm="3"> <ion-card>
-        <ion-card-header>
-          <ion-card-title> <img class="displayed"  height="80px" width="80px" src="../../assets/images/relatorio2.png"> </ion-card-title>
-          <ion-card-subtitle></ion-card-subtitle>
-        </ion-card-header>
-
-        <ion-card-content>
-          RELATÓRIOS
-        </ion-card-content>
-      </ion-card>
-    </ion-col>
-      <ion-col size="6" size-sm="3"> <ion-card>
-        <ion-card-header>
-          <ion-card-title> <img class="displayed"  height="80px" width="80px" src="../../assets/images/relatorio.png"> </ion-card-title>
-          <ion-card-subtitle></ion-card-subtitle>
-        </ion-card-header>
-
-        <ion-card-content>
-         MATERIAIS
-        </ion-card-content>
-      </ion-card></ion-col>
-      <ion-col size="6" size-sm="3"> <ion-card>
-        <ion-card-header>
-          <ion-card-title> <img class="displayed"  height="80px" width="80px" src="../../assets/images/relatorio2.png"> </ion-card-title>
-          <ion-card-subtitle></ion-card-subtitle>
-        </ion-card-header>
-
-        <ion-card-content>
-          SERVIÇOS
-        </ion-card-content>
-      </ion-card></ion-col>
+      <ion-col size="6" (click)="onProfile()">
+        <div class="sub_div">
+          <div class="imgs"  [style.backgroundImage]="'url(assets/images/2.jpg)'"></div>
+          <ion-label>Cadastro</ion-label>
+        </div>
+      </ion-col>
+      <ion-col size="6" (click)="onProfile()">
+        <div class="sub_div">
+          <div class="imgs" [style.backgroundImage]="'url(assets/images/2.jpg)'"></div>
+          <ion-label>Produtos</ion-label>
+        </div>
+      </ion-col>
     </ion-row>
-  </ion-grid>
-
-  <ion-datetime-button datetime="datetime"></ion-datetime-button>
-
-<ion-modal [keepContentsMounted]="true">
-  <ng-template>
-    <ion-datetime id="datetime"></ion-datetime>
-  </ng-template>
-</ion-modal>
-
-  <ion-button>Confirmar </ion-button>
-<ion-button [disabled]="true">Disabled</ion-button>
+    <ion-row>
+      <ion-col size="6" (click)="onAgenda()">
+        <div class="sub_div">
+          <div class="imgs" [style.backgroundImage]="'url(assets/images/2.jpg)'"></div>
+          <ion-label>Agenda</ion-label>
+        </div>
+      </ion-col>
+      <ion-col size="6" (click)="onProfile()">
+        <div class="sub_div">
+          <div class="imgs" [style.backgroundImage]="'url(assets/images/2.jpg)'"></div>
+          <ion-label>Serviços</ion-label>
+        </div>
+      </ion-col>
+    </ion-row>
+  </div>
 
 
 </ion-content>
-

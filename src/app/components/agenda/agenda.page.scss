@@ -1,0 +1,49 @@
+ion-slides {
+  ion-slide {
+    .image {
+      height: 170px;
+      width: 100%;
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+  }
+}
+
+.btn {
+  position: absolute;
+  top: 10px;
+  width: 100%;
+  .text {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px;
+  }
+}
+
+ion-item {
+  padding: 5px;
+  border: 1px solid lightgray;
+  margin: 20px;
+  border-radius: 10px;
+  .ttl {
+    .sub_heading {
+      margin: 5px 0px;
+      color: black;
+      font-size: 15px;
+    }
+    ion-label {
+      font-size: 10px;
+      color: rgb(255, 255, 255);
+    }
+  }
+  .content_button {
+    height: 30px;
+    width: 80px;
+    margin: 0px;
+    --border-radius: 30px;
+    color: #ffff;
+    font-size: 10px;
+  }
+}

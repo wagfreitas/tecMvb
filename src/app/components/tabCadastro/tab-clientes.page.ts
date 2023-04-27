@@ -3,13 +3,13 @@ import { IonicModule } from '@ionic/angular';
 
 
 @Component({
-  selector: 'app-tabCadastro',
-  templateUrl: 'tabCadastro.page.html',
-  styleUrls: ['tabCadastro.page.scss'],
+  selector: 'app-tab-clientes',
+  templateUrl: 'tab-clientes.page.html',
+  styleUrls: ['tab-clientes.page.scss'],
   standalone: true,
   imports: [IonicModule]
 })
-export class Tab2Page {
+export class TabClientesPage {
 
   constructor() {}
 

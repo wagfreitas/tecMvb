@@ -1,0 +1,32 @@
+<ion-content>
+  <div class="main_image" [style.backgroundImage]="'url(assets/images/mecanico.jpg)'">
+
+
+    <div class="main_content ion-padding">
+      <div class="img" [style.backgroundImage]="'url(assets/images/logo.jpg)'"></div>
+      <ion-label class="heading">Aqui o difícil sai na hora.<br> O impossível demora um pouco.</ion-label>
+    </div>
+
+    <div class="main_div">
+      <ion-item lines="none">
+        <ion-input type="text" placeholder="Email"></ion-input>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-input type="text" placeholder="Senha"></ion-input>
+      </ion-item>
+
+      <ion-button class="content_button" (click)="onHome()" expand="block">
+        Confirmar
+      </ion-button>
+
+    </div>
+
+    <div class="second_div">
+      <ion-label class="heading" (click)="onForgot()">Esqueceu a Senha?</ion-label>
+      <ion-label class="sub_heading">Não em conta ainda? <span (click)="onSignup()">CADASTRA-SE</span></ion-label>
+    </div>
+
+  </div>
+
+  </ion-content>
+
