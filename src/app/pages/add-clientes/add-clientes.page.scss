@@ -1,0 +1,21 @@
+ion-item {
+  --padding-start: 10px;
+  margin: 20px 0px;
+  ion-label {
+    color: gray;
+    margin-bottom: 6px;
+  }
+  ion-input {
+    border: solid 1px lightgray;
+    --padding-start: 10px;
+    border-radius: 5px;
+  }
+  ion-select {
+    border: solid 1px lightgray;
+    --padding-start: 10px;
+    border-radius: 5px;
+  }
+  h6 {
+    margin: 5px 0px;
+  }
+}

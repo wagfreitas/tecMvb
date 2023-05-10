@@ -1,0 +1,95 @@
+{
+  "userList": [
+    {
+      "name": "Reparo em Motor de carro ",
+      "cliente": "Antonio Maria de Souza" ,
+      "categoria": "Manutençao Veiculos",
+      "status": "aberto",
+      "address": "Na oficina",
+      "dateInicio": "05/01/2023",
+      "dateFim": "05/05/2023"
+    },
+    {
+      "name": "Transporte de Pessoa ",
+      "cliente": "Jose Frncisco" ,
+      "categoria": "Transporte",
+      "status": "aberto",
+      "address": "Rua do Ouvidor",
+      "dateInicio": "01/01/2023",
+      "dateFim": "01/10/2023"
+    },
+    {
+      "name": "Pintura de Casa",
+      "cliente": "Francisco Martins " ,
+      "categoria": "Serviços Gerais",
+      "status": "aberto",
+      "address": "Rua Pavao, 487",
+      "dateInicio": "02/09/2023",
+      "dateFim": "02/11/2023"
+
+    },
+    {
+      "name": "Reparo em Motor de carro ",
+      "cliente": "Maria de Lourdes" ,
+      "categoria": "Manutençao Veiculos",
+      "status": "aberto",
+      "address": "Na oficina",
+      "dateInicio": "02/01/2023",
+      "dateFim": "02/03/2023"
+    },
+    {
+      "name": "Serviços Elétricos ",
+      "cliente": "Maria Luiza",
+      "categoria": "Serviços Gerais",
+      "status": "fechado",
+      "address": "Rodovia Raposo Tavares",
+      "dateInicio": "02/05/2023",
+      "dateFim": "02/05/2023"
+    },
+    {
+      "name": "Reparo em Motor de carro " ,
+      "cliente": "Antonio Maria de Souza" ,
+      "categoria": "Manutençao Veiculos",
+      "status": "aberto",
+      "address": "Na oficina",
+      "dateInicio": "02/01/2023",
+      "dateFim": "02/01/2023"
+    },
+    {
+      "name": "Reparo em Motor de carro ",
+      "cliente": "Antonio Maria de Souza" ,
+      "categoria": "Manutençao Veiculos",
+      "status": "aberto",
+      "address": "Na oficina",
+      "dateInicio": "02/05/2023",
+      "dateFim": "02/07/2023"
+    },
+    {
+      "name": "Reparo em Motor de carro ",
+      "cliente": "Antonio Maria de Souza" ,
+      "categoria": "Manutençao Veiculos",
+      "status": "aberto",
+      "address": "Na oficina",
+      "dateInicio": "03/01/2023",
+      "dateFim": "03/03/2023"
+    },
+    {
+      "name": "Reparo em Motor de carro ",
+      "cliente": "Antonio Maria de Souza" ,
+      "categoria": "Manutençao Veiculos",
+      "status": "aberto",
+      "address": "Na oficina",
+      "dateInicio": "08/04/2023",
+      "dateFim": "08/04/2023"
+    },
+    {
+      "name": "Limpeza de Obra",
+      "cliente": "Juliana Souza " ,
+      "categoria": "Serviços Gerais",
+      "status": "aberto",
+      "address": "Rua do Arpoador",
+      "dateInicio": "07/02/2023",
+      "dateFim": "07/02/2023"
+    }
+  ]
+}

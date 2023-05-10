@@ -1,0 +1,83 @@
+<ion-header color="primary">
+  <ion-toolbar mode="md">
+    <ion-title>Calendario de Eventos</ion-title>
+    <ion-buttons class="searchbtn" slot="start">
+      <ion-button (click)="onMenu()">
+        <ion-icon name="arrow-back-circle"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="head">
+    <ion-button fill="clear" (click)="back()">
+      <ion-icon name="chevron-back-outline" slot="icon-only" color="dark"></ion-icon>
+    </ion-button>
+    <p>{{ viewTitle }}</p>
+    <ion-button fill="clear" (click)="next()">
+      <ion-icon name="chevron-forward-outline" slot="icon-only" color="dark"></ion-icon>
+    </ion-button>
+  </div>
+
+  <div class="calendar">
+    <calendar [eventSource]="eventSource" calendarMode="month" [currentDate]="calendar.currentDate"
+      (onEventSelected)="onEventSelected($event)" (onCurrentDateChanged)="onDateSelected($event)"
+      noEventsLabel="No Bookings Found" (onTitleChanged)="onViewTitleChanged($event)" [startHour]="6" [endHour]="20"
+      [step]="30" [startingDayWeek]="1" [monthviewDisplayEventTemplate]="template" [showEventDetail]="false">
+    </calendar>
+  </div>
+
+  <ng-template #template let-view="view" let-row="row" let-col="col">
+    <div [class.with-event]="view.dates[row*7+col].events.length">
+      {{view.dates[row*7+col].label}}
+      <div class="indicator-container">
+        <div class="event-indicator" *ngFor="let e of view.dates[row*7+col].events"></div>
+      </div>
+    </div>
+  </ng-template>
+
+  <div class="ittl2">
+    <ion-label class="ttl1">Agendados({{numEvent}})</ion-label>
+  </div>
+
+
+
+
+  <div class="main_content_div" >
+
+    <div class="address_div" *ngFor="let item of bookings">
+        <ion-label class="name_lbl">{{item.title}}</ion-label>
+
+        <div class="address_flex" style="align-items: flex-start;">
+            <ion-icon name="location" style="margin-top: 3px;"></ion-icon>
+            <ion-label class="complete_addr">{{item.endereco}}</ion-label>
+        </div>
+
+        <div class="address_flex">
+            <ion-icon name="person"></ion-icon>
+            <ion-label>{{item.cliente}}</ion-label>
+        </div>
+
+        <div class="address_flex">
+          <ion-icon name="calendar"></ion-icon>
+          <ion-label>{{item.startTime | date: 'dd/MM/yyyy'}} - {{item.endTime | date:
+            'dd/MM/yyyy'}}</ion-label>
+      </div>
+
+        <div class="address_flex" style="margin-bottom: 0px;">
+          <ion-icon name="hammer"></ion-icon>
+            <ion-label>{{item.categoria}}</ion-label>
+        </div>
+
+        <ion-icon name="chevron-forward-outline" class="arrow_icn"></ion-icon>
+    </div>
+
+
+    <div class="add_btn" (click)="goToAddEvent()">
+      <ion-label>Nova Agenda</ion-label>
+    </div>
+</div>
+
+
+</ion-content>

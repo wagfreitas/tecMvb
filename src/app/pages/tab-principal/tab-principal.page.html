@@ -1,0 +1,52 @@
+<ion-content>
+  <div class="img">
+    <div class="main_image" [style.backgroundImage]="'url(assets/images/mecanico.jpg)'">
+
+      <ion-buttons slot="start">
+        <ion-button (click)="util.openMenu()" color="white">
+          <ion-icon slot="start" name="reorder-three-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+
+      <div class="searchbar">
+        <ion-label class="sub_heading">Selecione uma Opção</ion-label>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="main_content">
+
+    <ion-row>
+      <ion-col size="6" (click)="onClientes()">
+        <div class="sub_div">
+          <div class="imgs"  [style.backgroundImage]="'url(assets/images/cadastro.jpg)'"></div>
+          <ion-label>Cadastro</ion-label>
+        </div>
+      </ion-col>
+      <ion-col size="6" (click)="onProfile()">
+        <div class="sub_div">
+          <div class="imgs" [style.backgroundImage]="'url(assets/images/produtos.jpg)'"></div>
+          <ion-label>Produtos</ion-label>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="6" (click)="onAgenda()">
+        <div class="sub_div">
+          <div class="imgs" [style.backgroundImage]="'url(assets/images/agenda.jpg)'"></div>
+          <ion-label>Agenda</ion-label>
+        </div>
+      </ion-col>
+      <ion-col size="6" (click)="onProfile()">
+        <div class="sub_div">
+          <div class="imgs" [style.backgroundImage]="'url(assets/images/servicos.jpg)'"></div>
+          <ion-label>Serviços</ion-label>
+        </div>
+      </ion-col>
+    </ion-row>
+  </div>
+
+
+</ion-content>
+
