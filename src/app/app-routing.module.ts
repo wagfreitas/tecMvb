@@ -64,7 +64,12 @@ const routes: Routes = [
   {
     path: 'add-clientes',
     loadChildren: () => import('./pages/add-clientes/add-clientes.module').then( m => m.AddClientesPageModule)
-  }
+  },
+  {
+    path: 'payment',
+    loadChildren: () => import('./pages/payment/payment.module').then( m => m.PaymentPageModule)
+  },
+
 ];
 @NgModule({
   imports: [

@@ -22,6 +22,8 @@ export class EventAroundPage implements OnInit {
   ngOnInit() {
   }
 
+
+
   getULocation() {
     let map;
     const markersOnMap = [
@@ -82,6 +84,7 @@ export class EventAroundPage implements OnInit {
       lat: 21.5346,
       lng: 71.8275
     };
+
     initMap();
 
     function addMarker() {
@@ -139,10 +142,10 @@ export class EventAroundPage implements OnInit {
     }
 
     function initMap() {
-      // map = new google.maps.Map(document.getElementById('map'), {
-      //   zoom: 10,
-      //   center: centerCords,
-      // });
+       map = new google.maps.Map(document.getElementById('map'), {
+       zoom: 10,
+        center: centerCords,
+      });
       var style = [
         {
           featureType: 'all',

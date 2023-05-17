@@ -38,7 +38,10 @@ export class MyCalendarPage implements OnInit {
     private router: Router,
     private AgendaService: AgendaService
   ) {
-
+    this.AgendaService.getAgenda().subscribe((ret) => {
+      console.log(ret)
+    this.createRandomEvents(ret)
+    })
   }
 
   slideOpts3 = {
@@ -46,10 +49,6 @@ export class MyCalendarPage implements OnInit {
   };
 
   ngOnInit() {
-    this.AgendaService.getAgenda().subscribe((ret) => {
-      console.log(ret)
-    this.createRandomEvents(ret)
-    })
 
   }
 

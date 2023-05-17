@@ -7,5 +7,9 @@
   Copyright and Good Faith Purchasers © 2021-present initappz.
 */
 export const environment = {
-  production: true
+  production: true,
+  apiURL: 'https://us-central1-sistmvb.cloudfunctions.net/app',
+  keys: {
+    googleMaps: 'AIzaSyCRRuiqgDM06Rsi-w_6NPKZThFmJTdgjbA'
+  }
 };
