@@ -1,22 +1,10 @@
+hr {
+  margin-top: 1.5rem;
+  margin-bottom: 0rem;
+  border: 10;
+  border-top: 3px solid rgba(0, 0, 0, 0);
+}
 
-ion-item {
-  --padding-start: 10px;
-  margin: 20px 0px;
-  ion-label {
-    color: gray;
-    margin-bottom: 6px;
-  }
-  ion-input {
-    border: solid 1px lightgray;
-    --padding-start: 10px;
-    border-radius: 5px;
-  }
-  ion-select {
-    border: solid 1px lightgray;
-    --padding-start: 10px;
-    border-radius: 5px;
-  }
-  h6 {
-    margin: 5px 0px;
-  }
+.botao{
+  padding-top: 27px;
 }

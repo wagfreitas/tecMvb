@@ -1,14 +1,68 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>
-      Calculadora de Serviço
-    </ion-title>
+    <ion-title>Calculadora de Serviço</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content class="ion-padding">
+  <form (ngSubmit)="manager(prodForm.value)" [formGroup]="prodForm">
+    <div class="form-body">
+      <h4 class="form-section">
+        <i class="feather ft-map-pin"></i> Discrimine os Materiais Utilizados
+      </h4>
 
-
-   
-
+      <div formArrayName="produtos">
+        <div [formGroupName]="i"
+             *ngFor="let item of prodForm.get('produtos')['controls'];
+           let i = index">
+          <ion-row class="ion-justify-content-left">
+            <ion-col size="4">
+              <div class="form-group">
+                <ion-label for="produto" position="stacked">
+                  Material {{ i + 1 }}
+                </ion-label>
+                <ion-item class="form-control" lines="none">
+                  <ion-label position="stacked">Material</ion-label>
+                  <ion-select placeholder="Material">
+                    <ion-select-option *ngFor="let item of arrayProdutos"
+                                       formControlName="nomeMaterial"
+                                       value="Conserto de Veículo">
+                      {{item.tipo}}
+                    </ion-select-option>
+                  </ion-select>
+                </ion-item>
+              </div>
+              <div class="col-md-4">
+                <ion-item>
+                  <ion-label for="quantidade" position="stacked">
+                    qtde
+                  </ion-label>
+                  <ion-input class="form-control"
+                             formControlName="produto"
+                             id="quantidade"
+                             placeholder="qtdeMaterial"
+                             type="text">
+                  </ion-input>
+                  <small *ngIf="submitted" class="invalid-feedback"></small>
+                </ion-item>
+              </div>
+            </ion-col>
+            <div class="col-md-3">
+              <button (click)="removeExames(i)"
+                      *ngIf="i > 0"
+                      float-right
+                      type="button">
+                X
+              </button>
+            </div>
+            <div class="col-md-3">
+              <button (click)="addProdutos()" float-right type="button">
+                + Outra Posição
+              </button>
+            </div>
+          </ion-row>
+        </div>
+      </div>
+    </div>
+  </form>
 </ion-content>

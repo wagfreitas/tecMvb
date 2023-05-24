@@ -40,21 +40,18 @@ export class AddClientesPage implements OnInit {
 
     this.clienteService.addCliente(dadosCliente).subscribe((res) => {
       if (res.message === 'Cliente Criado com Sucesso') {
-       this.alertCtrl.create(
-        {
-          header: 'YESS!!!',
-          subHeader: 'Tudo certo ',
-          buttons: ['Dismiss']
-        }
-       )
+        Swal.fire(
+          'Bom Trabalho!',
+          'Cadastro realizado com sucesso !',
+          'success'
+        )
       } else {
-        this.alertCtrl.create(
-          {
-            header: 'NOOOO!!!',
-            subHeader: 'Algo deu errado  ',
-            buttons: ['Dismiss']
-          }
-         )
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Algo deu errado ',
+          footer: '<a href="">Verigique sua Internet</a>'
+        })
       }
     });
   }

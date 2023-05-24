@@ -17,7 +17,11 @@ export class PaymentPage implements OnInit {
    prodForm: FormGroup;
    produtos: FormArray;
    materiais: FormArray;
-   deslocamentos: FormArray;;
+   deslocamentos: FormArray;
+   submitted = false;
+   final = {};
+   arrayProdutos = [];
+   arrayMaterial = [];
 
 
   @ViewChild("f", { read: true, static: false }) userProfileForm: NgForm;
@@ -37,6 +41,7 @@ export class PaymentPage implements OnInit {
       tipo: 'Metro',
       valor: '9.00',
       flag: '1',
+
     },
     {
       tipo: 'Hora Trabalhada',
@@ -73,6 +78,11 @@ export class PaymentPage implements OnInit {
   }
 
   ngOnInit() {
+    this.arrayProdutos = this.custos.filter(x => x.flag === '2');
+    this.arrayMaterial = this.custos.filter(x => x.flag === '1');
+    this.arrayMaterial = this.custos.filter(x => x.flag === '1');
+
+
      this.cadProdForm();
   }
 
@@ -85,6 +95,18 @@ export class PaymentPage implements OnInit {
     })
 
   }
+
+  addProdutos(): void {
+    this.produtos = this.prodForm.get("produtos") as FormArray;
+    this.produtos.push(this.initProdutosFields());
+  }
+
+  removeMaterial(i: number): void {
+    this.produtos = this.prodForm.get("produtos") as FormArray;
+    this.produtos.removeAt(i);
+  }
+
+
 
   initProdutosFields(): FormGroup{
     return this.fb.group({
@@ -109,8 +131,30 @@ export class PaymentPage implements OnInit {
       valorUnitDeslocamento: ['']
     })
 
+  }
 
+  manager(val: any): void {
+    this.submitted = true;
 
+    if (!this.prodForm.valid) {
+      return;
+    } else {
+      this.final = {
+        produtos: val.produtos,
+      };
+
+    /*  this.exameService.createMascara(val.mascara, this.final).then((res) => {
+        console.log("retorno", res);
+        this.clearForm();
+      }); */
+
+      this.prodForm.reset();
+    }
+  }
+
+  removeExames(i: number): void {
+    this.produtos = this.prodForm.get("produtos") as FormArray;
+    this.produtos.removeAt(i);
   }
 
 
