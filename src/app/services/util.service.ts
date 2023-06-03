@@ -73,7 +73,7 @@ export class UtilService {
 
   async showSimpleAlert(msg: string) {
     const alert = await this.alertCtrl.create({
-      header: 'warning',
+      header: 'Sucesso',
       message: msg,
       buttons: ['ok'],
     });

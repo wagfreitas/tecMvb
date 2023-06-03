@@ -46,7 +46,7 @@
 
   <div class="main_content_div" >
 
-    <div class="address_div" *ngFor="let item of bookings">
+    <div class="address_div" *ngFor="let item of bookings"  (click)="goToPayment(item)">
         <ion-label class="name_lbl">{{item.title}}</ion-label>
 
         <div class="address_flex" style="align-items: flex-start;">
@@ -70,7 +70,7 @@
             <ion-label>{{item.categoria}}</ion-label>
         </div>
 
-        <ion-icon name="chevron-forward-outline" class="arrow_icn"></ion-icon>
+        <ion-icon (click)="goToPayment($event.target)" name="chevron-forward-outline" class="arrow_icn"></ion-icon>
     </div>
 
 

@@ -1,8 +1,8 @@
 
 export const environment = {
   production: false,
- // apiURL: 'http://localhost:3000',
-  apiURL: 'https://us-central1-sistmvb.cloudfunctions.net/app',
+  apiURL: 'http://127.0.0.1:5001/sistmvb/us-central1/app',
+ // apiURL: 'https://us-central1-sistmvb.cloudfunctions.net/app',
   firebase: {
     apiKey: "AIzaSyDF-oIMiiX0hQVRIPY41mdZt3Ed31Dc0lo",
     authDomain: "sistmvb.firebaseapp.com",

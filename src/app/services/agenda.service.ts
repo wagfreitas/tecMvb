@@ -14,6 +14,7 @@ import { ServicosManagementService } from './servicos-management.service';
 export class AgendaService {
  private apiURL = environment.apiURL
  private _agendaData = new BehaviorSubject<Agenda>(null)
+ private idagenda = ''
 
 
   constructor(
@@ -38,6 +39,18 @@ export class AgendaService {
     public getAgenda(): Observable<Agenda> {
       return this._agendaData.asObservable();
     }
+
+    public setIdAgenda(id:string){
+      this.idagenda=id;
+  }
+
+   public getIdAgenda(){
+      return this.idagenda;
+  }
+
+  public updateAgenda(arrDados: any, id: string): Observable<any>{
+    return this.http.put(`${this.apiURL}/agenda/${id}`, arrDados)
+  }
 
 
 }

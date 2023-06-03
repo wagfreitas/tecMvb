@@ -8,3 +8,29 @@ hr {
 .botao{
   padding-top: 27px;
 }
+
+
+h1, h2, h3, h4, h5, h6 {
+    margin-top: 0px;
+    margin-bottom: 10px;
+    font-weight: 400;
+    line-height: 1.2;
+}
+
+.fechamento{
+  flex-direction: column;
+}
+
+.ion-page {
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  display: inherit;
+  position: absolute;
+  flex-direction: column;
+  justify-content: space-between;
+  contain: layout size style;
+  overflow: hidden;
+  z-index: 0;
+}

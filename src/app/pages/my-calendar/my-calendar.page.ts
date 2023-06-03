@@ -75,8 +75,6 @@ export class MyCalendarPage implements OnInit {
   }
 
   createRandomEvents(agendaList) {
-
-
   var events = [];
 
   agendaList.map(res => {
@@ -89,6 +87,7 @@ export class MyCalendarPage implements OnInit {
 
 
       events.push({
+        id: res.id,
         title: res.name,
         startTime: startDay,
         endTime: endDay,
@@ -119,6 +118,11 @@ export class MyCalendarPage implements OnInit {
 
   goToAddEvent(){
     this.router.navigate(['tabs/tab5'])
+  }
+
+  goToPayment(idAgenda){
+     this.AgendaService.setIdAgenda(idAgenda.id)
+     this.router.navigate(['payment']);
   }
 
 }

@@ -2,6 +2,9 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { NavController, NavParams } from '@ionic/angular';
 import { FormBuilder, FormArray, FormGroup, Validators, FormControl, NgForm } from '@angular/forms';
 
+import { AgendaService } from 'src/app/services/agenda.service';
+import { UtilService } from 'src/app/services/util.service';
+
 interface Produto {
   tipo: string;
   valor: string;
@@ -14,17 +17,30 @@ interface Produto {
   styleUrls: ['./payment.page.scss'],
 })
 export class PaymentPage implements OnInit {
-   prodForm: FormGroup;
-   produtos: FormArray;
+   custosForm: FormGroup;
+   horas: FormArray;
    materiais: FormArray;
    deslocamentos: FormArray;
    submitted = false;
    final = {};
-   arrayProdutos = [];
    arrayMaterial = [];
+   arrayDeslocamento = [];
+   arrayHoras = [];
+   finalMateriais = [];
+   finalDeslocamento = [];
+   finalHoras = [];
+   openMaterial: boolean = false;
+   openHoras: boolean= false;
+   openDeslocamentos: boolean= false;
+   ValorTotal: number = 0;
+   valorMateriais:number =0;
+   valorDeslocamentos: number = 0;
+   valorHoras: number = 0;
+   confirma: boolean = true;
+   idAgenda: string;
+   result: any
 
-
-  @ViewChild("f", { read: true, static: false }) userProfileForm: NgForm;
+  @ViewChild("f", { read: true, static: false }) cadPaymentForm: NgForm;
 
   custos = [
     {
@@ -72,95 +88,210 @@ export class PaymentPage implements OnInit {
   ];
 
   constructor(
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private agendaService: AgendaService,
+    private utilService: UtilService
   ) {
+
 
   }
 
   ngOnInit() {
-    this.arrayProdutos = this.custos.filter(x => x.flag === '2');
-    this.arrayMaterial = this.custos.filter(x => x.flag === '1');
-    this.arrayMaterial = this.custos.filter(x => x.flag === '1');
+
+    this.idAgenda = this.agendaService.getIdAgenda()
+
+    this.arrayMaterial = this.custos.filter(x => x.flag === '3');
+    this.arrayHoras= this.custos.filter(x => x.flag === '2');
+    this.arrayDeslocamento = this.custos.filter(x => x.flag === '1');
 
 
      this.cadProdForm();
+
+  }
+
+  get f() {
+    return this.custosForm.controls;
   }
 
 
   cadProdForm(){
-    this.prodForm = this.fb.group({
-      produtos: this.fb.array([this.initProdutosFields()]),
+    this.custosForm = this.fb.group({
+      horas: this.fb.array([this.initHorasFields()]),
       materiais: this.fb.array([this.initMateriaisFields()]),
       deslocamentos: this.fb.array([this.initDeslocamentosFields()])
     })
 
   }
 
-  addProdutos(): void {
-    this.produtos = this.prodForm.get("produtos") as FormArray;
-    this.produtos.push(this.initProdutosFields());
-  }
-
-  removeMaterial(i: number): void {
-    this.produtos = this.prodForm.get("produtos") as FormArray;
-    this.produtos.removeAt(i);
-  }
-
-
-
-  initProdutosFields(): FormGroup{
+  initHorasFields(): FormGroup{
     return this.fb.group({
-      tipoProd: [''],
-      valorProd: ['']
+      tipoHoras: ['', Validators.required],
+      qtdeHoras: ['', Validators.required],
+      valorHoras: ['']
     })
 
   }
 
   initMateriaisFields(): FormGroup {
     return this.fb.group({
-      nomeMaterial: [''],
-      qtdeMaterial: [''],
+      nomeMaterial: ['', Validators.required],
+      qtdeMaterial: ['', Validators.required],
       valorUnitMaterial: ['']
     })
   }
 
   initDeslocamentosFields(): FormGroup{
     return this.fb.group({
-      tipoDeslocamento: [''],
-      distancia: [''],
+      tipoDeslocamento: ['', Validators.required],
+      distancia: ['', Validators.required],
       valorUnitDeslocamento: ['']
     })
 
   }
 
+
+  addMaterial(i): void {
+    const int = i
+    this.materiais.push(this.initMateriaisFields());
+  }
+
+  addHoras(h): void {
+    const int = h
+
+    this.horas = this.custosForm.get("horas") as FormArray;
+    this.horas.push(this.initHorasFields());
+  }
+
+  addDeslocamento(h): void {
+    const int = h
+
+    this.deslocamentos = this.custosForm.get("deslocamentos") as FormArray;
+    this.deslocamentos.push(this.initDeslocamentosFields());
+
+
+  }
+
+
+  removeMaterial(i: number): void {
+    this.materiais = this.custosForm.get("materiais") as FormArray;
+    this.materiais.removeAt(i);
+  }
+
+  removeHoras(i: number): void {
+    this.horas= this.custosForm.get("horas") as FormArray;
+    this.horas.removeAt(i);
+  }
+
+  removeDeslocamento(i: number): void {
+    this.deslocamentos= this.custosForm.get("deslocamentos") as FormArray;
+    this.deslocamentos.removeAt(i);
+  }
+
+
   manager(val: any): void {
-    this.submitted = true;
-
-    if (!this.prodForm.valid) {
-      return;
-    } else {
-      this.final = {
-        produtos: val.produtos,
-      };
-
-    /*  this.exameService.createMascara(val.mascara, this.final).then((res) => {
-        console.log("retorno", res);
-        this.clearForm();
-      }); */
-
-      this.prodForm.reset();
+    if(this.confirma != true){
+      this.ValorTotal = 0;
+      this.valorMateriais = 0;
+      this.valorHoras = 0;
+      this.valorDeslocamentos = 0;
+      this.finalDeslocamento = [];
+      this.finalHoras = [];
+      this.finalMateriais= [];
     }
+    this.sumMateriais(val.materiais);
+    this.sumDeslocamentos(val.deslocamentos);
+    this.sumHoras(val.horas)
+    this.submitted = true;
+    this.confirma = false
+
   }
 
-  removeExames(i: number): void {
-    this.produtos = this.prodForm.get("produtos") as FormArray;
-    this.produtos.removeAt(i);
+  gravar(){
+    this.final = {
+      materiais: this.finalMateriais,
+      deslocamentos: this.finalDeslocamento,
+      horas: this.finalHoras
+    }
+
+    this.agendaService.updateAgenda(this.final, this.idAgenda).subscribe(res =>{
+      this.result = res
+      this.utilService.showSimpleAlert(res.mensagem)
+
+    })
+
   }
 
+  sumMateriais(valMat){
+    const valorTotal = 0
+    valMat.forEach(element => {
+      const materialTipo = element.nomeMaterial
+      const materialFilter = this.arrayMaterial.find(x => x.tipo === materialTipo && x.flag === '3')
+      const valorSel = materialFilter.valor
+      const valor = parseFloat(valorSel) * parseFloat(element.qtdeMaterial);
+      this.valorMateriais = this.valorMateriais + valor
 
+      let finalMat = {
+        nomeMaterial : element.nomeMaterial,
+        qtdeMaterial: element.qtdeMaterial,
+        valorMaterial: valor
+      }
+      this.finalMateriais.push(finalMat)
+      this.ValorTotal = this.ValorTotal + valor
+    });
 
+  }
 
+  sumDeslocamentos(valDesl){
 
+    valDesl.forEach(element => {
+      const deslocamentoTipo = element.tipoDeslocamento
+      const deslocamentoFilter = this.arrayDeslocamento.find(x => x.tipo === deslocamentoTipo && x.flag === '1')
+      const valorSel = deslocamentoFilter.valor
+      const valor = parseFloat(valorSel) * parseFloat(element.distancia);
+      this.valorDeslocamentos = this.valorDeslocamentos + valor;
 
+      let finalDesl= {
+        tipoDeslocamento : element.tipoDeslocamento,
+        distancia: element.distancia,
+        valorDeslocamento: valor
+      }
+      this.finalDeslocamento.push(finalDesl)
+      this.ValorTotal = this.ValorTotal + valor;
+    });
+
+  }
+
+  sumHoras(valHoras){
+
+    valHoras.forEach(element => {
+      const horasTipo = element.tipoHoras
+      const horasFilter = this.arrayHoras.find(x => x.tipo === horasTipo && x.flag === '2')
+      const valorSel = horasFilter.valor
+      const valor = parseFloat(valorSel) * parseFloat(element.qtdeHoras);
+      this.valorHoras = this.valorHoras + valor
+
+      let finalHor = {
+        tipoHoras : element.tipoHoras,
+        qtdwHoras: element.qtdeHoras,
+        valorMaterial: valor
+      }
+      this.finalHoras.push(finalHor)
+
+      this.ValorTotal = this.ValorTotal + valor
+    });
+
+  }
+
+  openMaterialList(){
+    this.openMaterial = !this.openMaterial
+  }
+
+  openHorasList(){
+    this.openHoras= !this.openHoras
+  }
+
+  openDeslocamentoList(){
+    this.openDeslocamentos = !this.openDeslocamentos
+  }
 
 }
