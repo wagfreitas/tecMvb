@@ -107,7 +107,7 @@ export class MyCalendarPage implements OnInit {
   removeEvents() {
     this.eventSource = [];
   }
-
+  
   onMenu() {
     this.router.navigate(['tabs/home']);
 
@@ -118,7 +118,7 @@ export class MyCalendarPage implements OnInit {
   }
 
   goToAddEvent(){
-    this.router.navigate(['tabs/tab5'])
+    this.router.navigate(['./add-event'])
   }
 
 }

@@ -1,34 +1,33 @@
 <ion-content>
-  <div [style.backgroundImage]="'url(assets/images/mecanico.jpg)'"
-       class="main_image">
+  <div [style.backgroundImage]="'url(assets/images/mecanico.jpg)'" class="main_image">
     <div class="main_content ion-padding">
       <div [style.backgroundImage]="'url(assets/images/logo.jpg)'" class="img">
       </div>
       <ion-label class="heading">
         <br>
         Aqui o difícil sai na hora.
-        <br/>O impossível demora um pouco.
+        <br />O impossível demora um pouco.
       </ion-label>
     </div>
 
     <div class="main_div">
       <form (ngSubmit)="doLogin(loginForm.value)" [formGroup]="loginForm">
         <ion-item lines="none">
-          <ion-input type="email" placeholder="Email" formControlName="email" clearInput autocapitalize="off" inputmode="email"></ion-input>
+          <ion-input type="email" placeholder="Email" formControlName="email" clearInput inputmode="email"></ion-input>
         </ion-item>
         <div class="error-container">
-          <ng-container >
-              <div class="error-message">
-                  <ion-icon name="information-circle-outline"></ion-icon>
-
-              </div>
+          <ng-container>
+            <div class="error-message">
+              <ion-icon name="information-circle-outline"></ion-icon>
+            </div>
           </ng-container>
-      </div>
+        </div>
         <ion-item lines="none">
-          <ion-input type="password" placeholder="Password" formControlName="password"></ion-input>
+          <ion-input type="{{type}}" placeholder="Password" formControlName="password"></ion-input>
+          <div (click)="passwordView()" style.backgroundImage="{{state ? 'url(assets/images/closeEye.png)' : 'url(assets/images/openEye.png)'}}" class="img"></div>
         </ion-item>
 
-        <ion-button type ="submit" [disabled]="!loginForm.valid" class="content_button" expand="block">
+        <ion-button type="submit" [disabled]="!loginForm.valid" class="content_button" expand="block">
           Confirmar
         </ion-button>
       </form>

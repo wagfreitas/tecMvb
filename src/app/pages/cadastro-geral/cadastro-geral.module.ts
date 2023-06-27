@@ -4,9 +4,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { AddClientesPageRoutingModule } from './add-clientes-routing.module';
+import { CadastroGeralPageRoutingModule } from './cadastro-geral-routing.module';
 
-import { AddClientesPage } from './add-clientes.page';
+import { CadastroGeralPage } from './cadastro-geral.page';
 
 @NgModule({
   imports: [
@@ -14,8 +14,8 @@ import { AddClientesPage } from './add-clientes.page';
     FormsModule,
     IonicModule,
     ReactiveFormsModule,
-    AddClientesPageRoutingModule
+    CadastroGeralPageRoutingModule
   ],
-  declarations: [AddClientesPage]
+  declarations: [CadastroGeralPage]
 })
-export class AddClientesPageModule {}
+export class CadastroGeralPageModule {}

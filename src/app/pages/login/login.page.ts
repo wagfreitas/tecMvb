@@ -4,7 +4,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ModalController } from '@ionic/angular';
 import { Preferences } from '@capacitor/preferences';
 import { ResetPasswordPage } from '../reset-password/reset-password.page';
-import { getAuth, signInWithEmailAndPassword} from 'firebase/auth'
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
 import { AuthenticationService } from 'src/app/services/authentication.service';
 
 import { UtilService } from 'src/app/services/util.service';
@@ -15,18 +15,18 @@ import { UtilService } from 'src/app/services/util.service';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-
-  email: string = '';
+  state: boolean = false;
+  type: string = "password";
   loginForm: FormGroup;
   errorMessage: string = '';
   validation_messages!: {
     'email': [
-      {type: 'required', message: 'Email é requerido'},
-      {type: 'pattern', message: 'Digite um email válido' }
+      { type: 'required', message: 'Email é requerido' },
+      { type: 'pattern', message: 'Digite um email válido' }
     ],
     'password': [
-      {type: 'required', message: 'Senha é requerido'},
-      {type: 'minLenght', message: 'Senha deve ter ao  menos 5 caracteres' }
+      { type: 'required', message: 'Senha é requerido' },
+      { type: 'minLenght', message: 'Senha deve ter ao  menos 5 caracteres' }
     ],
   }
 
@@ -50,6 +50,10 @@ export class LoginPage implements OnInit {
   }
 
   ngOnInit() {
+    this.getStorage();
+    if (localStorage['CapacitorStorage.isLoggedIn'] === 'true') {
+      this.router.navigate(['/tabs/home'])
+    }
   }
 
   onClick() {
@@ -57,7 +61,7 @@ export class LoginPage implements OnInit {
   }
 
   doLogin(values: any) {
-    const {email, password } = values
+    const { email, password } = values
     const auth = getAuth();
     let user: any
     signInWithEmailAndPassword(auth, email, password)
@@ -68,24 +72,37 @@ export class LoginPage implements OnInit {
           this.setStorage();
           this.router.navigate(['/tabs/home'])
         }
-
-
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
         this.utilService.errorToast('Ocorreu um Erro na Autenticação, Verifique Email e Senha', 'red')
-
       });
-
   }
 
-  async setStorage(){
+  changeType(valor: any) {
+    if (valor) {
+      return "text";
+    };
+    return "password";
+  }
 
+  passwordView() {
+    this.state = !this.state
+    this.type = this.changeType(this.state)
+  }
+
+  async setStorage() {
     await Preferences.set({
       key: 'isLoggedIn',
       value: 'true'
     })
+  }
+
+  async getStorage() {
+    async () => {
+      const { value } = await Preferences.get({ key: 'isLoggedIn' });
+    }
   }
 
   onSignup() {

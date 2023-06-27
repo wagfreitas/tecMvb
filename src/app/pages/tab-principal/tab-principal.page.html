@@ -18,35 +18,47 @@
   <div class="main_content">
 
     <ion-row>
-      <ion-col size="6" (click)="onClientes()">
+      <ion-col size="6" (click)="onClientes()" class="tabs-container">
         <div class="sub_div">
-          <div class="imgs"  [style.backgroundImage]="'url(assets/images/cadastro.jpg)'"></div>
-          <ion-label>Cadastro</ion-label>
+          <div class="teste">
+            <div class="imgs" [style.backgroundImage]="'url(assets/svg/adicionar-usuario.svg)'"></div>
+            <ion-label>Cadastrar Clientes</ion-label>
+          </div>
         </div>
       </ion-col>
-      <ion-col size="6" (click)="onProfile()">
+
+      <ion-col size="6" (click)="onServicos()" class="tabs-container">
         <div class="sub_div">
-          <div class="imgs" [style.backgroundImage]="'url(assets/images/produtos.jpg)'"></div>
-          <ion-label>Produtos</ion-label>
+          <div class="teste">
+            <div class="imgs" [style.backgroundImage]="'url(assets/svg/construct-outline.svg)'"></div>
+            <ion-label>Cadastrar Serviços</ion-label>
+          </div>
         </div>
       </ion-col>
+
     </ion-row>
+    
     <ion-row>
-      <ion-col size="6" (click)="onAgenda()">
+      <ion-col size="6" (click)="onAgenda()" class="tabs-container">
         <div class="sub_div">
-          <div class="imgs" [style.backgroundImage]="'url(assets/images/agenda.jpg)'"></div>
-          <ion-label>Agenda</ion-label>
+          <div class="teste">
+            <div class="imgs" [style.backgroundImage]="'url(assets/svg/calendar-outline.svg)'"></div>
+            <ion-label>Agenda</ion-label>
+          </div>
         </div>
       </ion-col>
-      <ion-col size="6" (click)="onProfile()">
+      
+      <ion-col size="6" (click)="onProfile()" class="tabs-container">
         <div class="sub_div">
-          <div class="imgs" [style.backgroundImage]="'url(assets/images/servicos.jpg)'"></div>
-          <ion-label>Serviços</ion-label>
+          <div class="teste">
+            <div class="imgs" [style.backgroundImage]="'url(assets/images/q1.png)'"></div>
+            <ion-label>Outros</ion-label>
+          </div>
         </div>
       </ion-col>
+    
     </ion-row>
   </div>
 
 
 </ion-content>
-

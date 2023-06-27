@@ -5,6 +5,7 @@
   width: calc(100% + 100px);
   margin-left: -50px;
   overflow: hidden;
+
   .main_image {
     height: 30vh;
     width: 100%;
@@ -36,6 +37,7 @@
   position: absolute;
   top: 10px;
   width: 100%;
+
   .text {
     display: flex;
     flex-direction: row;
@@ -48,6 +50,10 @@
   position: absolute;
   top: 25%;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8rem;
+
   ion-row {
     ion-col {
       height: 20vh;
@@ -55,28 +61,50 @@
       justify-content: center;
       align-items: center;
       padding: 10px;
-      .sub_div {
-        height: 105%;
-        width: 95%;
-        background: linear-gradient(to right, #242223, #9f9c9b);
+
+      .tabs-container {
         display: flex;
         align-items: center;
-        flex-direction: column;
-        text-align: center;
+        justify-content: center;
+      }
+
+      .sub_div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 200px;
+        height: 250px;
         border-radius: 20px;
+        background: linear-gradient(170deg,rgb(51, 84, 122) , #243b55, #141e30);
+        position: relative;
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.28);
+        cursor: pointer;
+        transition: all .3s;
+
+        .teste {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 2rem;
+        }
+
         .imgs {
-          margin-top: 30px;
           height: 70px;
           width: 70px;
           background-position: center center;
           background-size: cover;
           background-repeat: no-repeat;
           border-radius: 10px;
+          filter: invert(100%);
         }
+
         ion-label {
-          margin: 10px 0px;
-          font-size: 12px;
           color: #ffff;
+          margin: 0 2px;
+          font-size: 25px;
+          font-weight: 600;
+          text-align: center;
+          word-break: break-word;
         }
       }
     }

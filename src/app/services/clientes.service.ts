@@ -22,7 +22,7 @@ export class ClientesService {
    }
 
    public addCliente(arrCliente: Cliente): Observable<any>{
-    console.log(arrCliente)
+
    const retorno = this.http.post(`${this.apiURL}/cliente/create`, arrCliente)
    this.getAllCliente()
    return retorno

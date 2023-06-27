@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="onBack()">
+        <ion-icon name="chevron-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Novo Cliente</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-list>
+    <form (ngSubmit)="onSave(serviceForm.value)" [formGroup]="serviceForm">
+      <ion-item lines="none">
+        <ion-label position="stacked">Serviço</ion-label>
+        <ion-input type="text" formControlName="nome" placeholder="Nome do Serviço"></ion-input>
+      </ion-item>
+
+      <ion-item lines="none">
+        <ion-label position="stacked">Valor</ion-label>
+        <ion-input type="number" step="any" formControlName="valor" placeholder="Valor"></ion-input>
+      </ion-item>
+      
+    </form>
+  </ion-list>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-button type="submit" (click)="onSave(serviceForm.value)" class="content_button" expand="block">
+      Salvar
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

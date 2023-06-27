@@ -5,54 +5,60 @@
         <ion-icon name="chevron-back"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-title>Novo Cliente </ion-title>
+    <ion-title>Novo Cliente</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
-<ion-list>
+  <ion-list>
+    <form (ngSubmit)="onSave(clientForm.value)" [formGroup]="clientForm">
+      <ion-item lines="none">
+        <ion-label position="stacked">Nome</ion-label>
+        <ion-input type="text" formControlName="nome" placeholder="Nome do Cliente"></ion-input>
+      </ion-item>
 
-  <ion-item>
-    <ion-label position="stacked">Nome</ion-label>
-    <ion-input type="text"[(ngModel)]="cliente" placeholder="Nome do Cliente"></ion-input>
-  </ion-item>
+      <ion-item lines="none">
+        <ion-label position="stacked">Cep</ion-label>
 
-  <ion-item lines="none">
-    <ion-label position="stacked">Cep</ion-label>
-    <ion-input type="text" [(ngModel)]="cep" placeholder="Digite um CEP Válido ."></ion-input>
-    <button (click)="getCep()">Confirma</button>
+        <div class="input-button-container">
+          <ion-input type="text" formControlName="cep" placeholder="Digite um CEP Válido."></ion-input>
+          <button (click)="getCep()">Confirmar</button>
+        </div>
+      </ion-item>
 
-  </ion-item>
-<ion-item>
-    <ion-label position="stacked">Endereço</ion-label>
-    <ion-input type="text"[(ngModel)]="logradouro" placeholder="Endereço."></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label position="stacked">Número</ion-label>
-    <ion-input type="number"[(ngModel)]="numero"   placeholder="Entre com o numero ."></ion-input>
-  </ion-item>
-<ion-item>
-    <ion-label position="stacked">Complemento</ion-label>
-    <ion-input type="text" [(ngModel)]="complemento" placeholder="Entre com o complemento ."></ion-input>
-  </ion-item>
+      <ion-item lines="none">
+        <ion-label position="stacked">Endereço</ion-label>
+        <ion-input type="text" formControlName="logradouro" placeholder="Endereço."></ion-input>
+      </ion-item>
 
-  <ion-item>
-    <ion-label position="stacked">Bairro</ion-label>
-    <ion-input type="text" [(ngModel)]="bairro" placeholder="Entre com o complemento ."></ion-input>
-  </ion-item>
+      <div class="loc-container">
+        <ion-item lines="none">
+          <ion-label position="stacked">Bairro</ion-label>
+          <ion-input type="text" formControlName="bairro" placeholder="Bairro."></ion-input>
+        </ion-item>
 
-  <ion-item lines="none">
-    <ion-label position="stacked">Fone</ion-label>
-    <ion-input type="text" [(ngModel)]="fone"  placeholder="Fone"></ion-input>
-  </ion-item>
+        <ion-item lines="none">
+          <ion-label position="stacked">Número</ion-label>
+          <ion-input type="number" formControlName="numero" placeholder="Número."></ion-input>
+        </ion-item>
+      </div>
 
-</ion-list>
+      <ion-item lines="none">
+        <ion-label position="stacked">Complemento</ion-label>
+        <ion-input type="text" formControlName="complemento" placeholder="Entre com o complemento."></ion-input>
+      </ion-item>
 
+      <ion-item lines="none">
+        <ion-label position="stacked">Fone</ion-label>
+        <ion-input type="text" formControlName="fone" placeholder="Fone"></ion-input>
+      </ion-item>
+    </form>
+  </ion-list>
 </ion-content>
 
 <ion-footer>
   <ion-toolbar>
-    <ion-button class="content_button" (click)="onSave()" expand="block">
+    <ion-button type="submit" (click)="onSave(clientForm.value)" class="content_button" expand="block">
       Salvar
     </ion-button>
   </ion-toolbar>

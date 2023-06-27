@@ -1,11 +1,12 @@
-<ion-header color="primary">
-  <ion-toolbar mode="md">
-    <ion-title>Calendario de Eventos</ion-title>
-    <ion-buttons class="searchbtn" slot="start">
+<ion-header>
+  <!-- <ion-toolbar mode="md"> -->
+  <ion-toolbar>
+    <ion-buttons slot="start">
       <ion-button (click)="onMenu()">
-        <ion-icon name="arrow-back-circle"></ion-icon>
+        <ion-icon name="chevron-back"></ion-icon>
       </ion-button>
     </ion-buttons>
+    <ion-title>Calendario de Eventos</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -44,40 +45,40 @@
 
 
 
-  <div class="main_content_div" >
+  <div class="main_content_div">
 
     <div class="address_div" *ngFor="let item of bookings">
-        <ion-label class="name_lbl">{{item.title}}</ion-label>
+      <ion-label class="name_lbl">{{item.title}}</ion-label>
 
-        <div class="address_flex" style="align-items: flex-start;">
-            <ion-icon name="location" style="margin-top: 3px;"></ion-icon>
-            <ion-label class="complete_addr">{{item.endereco}}</ion-label>
-        </div>
-
-        <div class="address_flex">
-            <ion-icon name="person"></ion-icon>
-            <ion-label>{{item.cliente}}</ion-label>
-        </div>
-
-        <div class="address_flex">
-          <ion-icon name="calendar"></ion-icon>
-          <ion-label>{{item.startTime | date: 'dd/MM/yyyy'}} - {{item.endTime | date:
-            'dd/MM/yyyy'}}</ion-label>
+      <div class="address_flex" style="align-items: flex-start;">
+        <ion-icon name="location" style="margin-top: 3px;"></ion-icon>
+        <ion-label class="complete_addr">{{item.endereco}}</ion-label>
       </div>
 
-        <div class="address_flex" style="margin-bottom: 0px;">
-          <ion-icon name="hammer"></ion-icon>
-            <ion-label>{{item.categoria}}</ion-label>
-        </div>
+      <div class="address_flex">
+        <ion-icon name="person"></ion-icon>
+        <ion-label>{{item.cliente}}</ion-label>
+      </div>
 
-        <ion-icon name="chevron-forward-outline" class="arrow_icn"></ion-icon>
+      <div class="address_flex">
+        <ion-icon name="calendar"></ion-icon>
+        <ion-label>{{item.startTime | date: 'dd/MM/yyyy'}} - {{item.endTime | date:
+          'dd/MM/yyyy'}}</ion-label>
+      </div>
+
+      <div class="address_flex" style="margin-bottom: 0px;">
+        <ion-icon name="hammer"></ion-icon>
+        <ion-label>{{item.categoria}}</ion-label>
+      </div>
+
+      <ion-icon name="chevron-forward-outline" class="arrow_icn"></ion-icon>
     </div>
 
 
     <div class="add_btn" (click)="goToAddEvent()">
       <ion-label>Nova Agenda</ion-label>
     </div>
-</div>
+  </div>
 
 
 </ion-content>

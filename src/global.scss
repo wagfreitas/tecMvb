@@ -150,7 +150,7 @@ ion-header {
 
 .content_button {
   height: 40px;
-  --background: linear-gradient(to right, #fe4a7a, #fd6a58);
+  --background: linear-gradient(to right, #4b79a1, #283e51);//linear-gradient(to right, #fe4a7a, #fd6a58);
   --border-radius: 30px;
   font-family: "regular";
   letter-spacing: 1px;
@@ -211,6 +211,10 @@ ion-modal.make_modal {
   display: block;
   margin: 15px 0px;
   color: #92949c;
+}
+
+.native-input[type=date]::-webkit-calendar-picker-indicator {
+  filter: invert(1);
 }
 
 ion-label {

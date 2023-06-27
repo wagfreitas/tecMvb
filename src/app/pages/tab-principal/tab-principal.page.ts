@@ -13,19 +13,20 @@ export class TabPrincipalPage implements OnInit {
 
   [x: string]: any;
   image1: any
-your: any;
+  your: any;
+  color1: string
   constructor(
     public util: UtilService,
     private router: Router,
     private servicoManagement: ServicosManagementService,
     private agendaService: AgendaService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
-   this.agendaService.getAllAgenda();
-   this.agendaService.getAgenda().subscribe(res =>{
-    res
-   })
+    this.agendaService.getAllAgenda();
+    this.agendaService.getAgenda().subscribe(res => {
+      res
+    })
   }
 
   onClientes() {
@@ -39,5 +40,7 @@ your: any;
 
   }
 
-
+  onServicos() {
+    this.router.navigate(['/cad-geral']);
+  }
 }

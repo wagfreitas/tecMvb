@@ -69,6 +69,11 @@ const routes: Routes = [
     path: 'payment',
     loadChildren: () => import('./pages/payment/payment.module').then( m => m.PaymentPageModule)
   },
+  {
+    path: 'cad-geral',
+    loadChildren: () => import('./pages/cadastro-geral/cadastro-geral.module').then( m => m.CadastroGeralPageModule)
+  },
+
 
 ];
 @NgModule({
